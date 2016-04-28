@@ -4,7 +4,7 @@ This is a dice playing game. There are two players in the game where the players
 The players are "Joe" and "Jane".
 
 ![Image of Dice]
-(https://raw.githubusercontent.com/colinbut/dice/master/src/main/resources/dice.png)
+(src/main/resources/dice.png)
 
 
 When one player throws the dice, the other player waits. Once the player completes his/her turn, he/she informs it is
