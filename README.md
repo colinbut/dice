@@ -1,7 +1,11 @@
 ## Dice
 
 This is a dice playing game. There are two players in the game where the players throws the dice on their turns.
-The players are "Joe" and "Jane". 
+The players are "Joe" and "Jane".
+
+![Image of Dice]
+(https://raw.githubusercontent.com/colinbut/dice/master/src/main/resources/dice.png)
+
 
 When one player throws the dice, the other player waits. Once the player completes his/her turn, he/she informs it is
 the other player's turn to throw the dice. After that, he/she starts waiting for the other player to complete their turn.
