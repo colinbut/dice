@@ -10,39 +10,51 @@ package com.mycompany.dice;
  *
  * @author colin
  */
-public class Player implements Runnable {
+public final class Player implements Runnable {
 
+    private Dice dice;
     private String currentPlayer;
     private String otherPlayer;
+
 
     /**
      * Constructor
      *
      * @param thisPlayer the current player
+     * @param dice the dice
+     * @param otherPlayer the other player
      */
-    public Player(String thisPlayer) {
+    public Player(Dice dice, String thisPlayer, String otherPlayer) {
+        this.dice = dice;
         this.currentPlayer = thisPlayer;
-        otherPlayer = currentPlayer.equals(Gamers.JOE) ? Gamers.JANE : Gamers.JOE;
+        this.otherPlayer = otherPlayer;
+    }
+
+
+    public String getCurrentPlayer() {
+        return currentPlayer;
+    }
+
+
+    public String getOtherPlayer() {
+        return otherPlayer;
     }
 
     @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Player{");
+        sb.append("currentPlayer='").append(currentPlayer).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public void run() {
         for(int i = 0; i < DiceGame.NUMBER_OF_ROUNDS; i++) {
-            synchronized (Dice.class) {
-                while (!Dice.getTurn().equals(currentPlayer)) { //wait for opposition
-                    try {
-                        System.out.println(currentPlayer + " is waiting for " + otherPlayer);
-                        Dice.class.wait(1000); //wait for 1 sec
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-
-                System.out.println(Dice.getTurn() + " throws " + Dice.roll());
-
-                Dice.setTurn(otherPlayer);
-                Dice.class.notifyAll();
-            }
+            dice.rollDice(this);
         }
     }
 }

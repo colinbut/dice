@@ -7,26 +7,24 @@ package com.mycompany.dice;
  */
 public class DiceGame {
 
-    public final static int NUMBER_OF_ROUNDS = 6;
+    static final int NUMBER_OF_ROUNDS = 6;
 
     /**
      * Main program
      *
      * @param args
      */
-    public static void main( String[] args ) {
+    public static void main(String[] args) {
 
-        Player player1 = new Player("Joe");
-        Player player2 = new Player("Jane");
+        Dice dice = new Dice();
 
-        Dice.setWhoStarts(Gamers.JOE);
+        Player player1 = new Player(dice, "Joe", "Jane");
+        Player player2 = new Player(dice, "Jane", "Joe");
 
-        Thread thread1 = new Thread(player1);
-        thread1.start();
+        dice.setWhoStarts(player1.getCurrentPlayer()); //let's make player 1 start the game
 
-        Thread thread2 = new Thread(player2);
-        thread2.start();
-
+        new Thread(player1).start();
+        new Thread(player2).start();
 
     }
 }
