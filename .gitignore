@@ -15,6 +15,7 @@
 .idea/*
 target/* 
 .gradle/*
+build/*
 
 # Packages #
 ############
