@@ -1,3 +1,8 @@
+/*
+ * |-------------------------------------------------
+ * | Copyright © 2016 Colin But. All rights reserved.
+ * |-------------------------------------------------
+ */
 package com.mycompany.dice;
 
 import org.slf4j.Logger;
@@ -8,7 +13,7 @@ import org.slf4j.LoggerFactory;
  *
  * @author colin
  */
-public class DiceGame {
+public final class DiceGame {
 
     private static final Logger logger = LoggerFactory.getLogger(DiceGame.class);
 
