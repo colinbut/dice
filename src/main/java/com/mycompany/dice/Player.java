@@ -31,15 +31,29 @@ public final class Player implements Runnable {
     }
 
 
+    /**
+     * Retrieves the current player
+     *
+     * @return the current player
+     */
     public String getCurrentPlayer() {
         return currentPlayer;
     }
 
 
+    /**
+     * Retrieves the opposition player
+     *
+     * @return the opposite player
+     */
     public String getOtherPlayer() {
         return otherPlayer;
     }
 
+
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Player{");

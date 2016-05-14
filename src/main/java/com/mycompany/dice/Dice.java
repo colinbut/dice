@@ -25,7 +25,7 @@ public final class Dice {
 
 
     /**
-     * Determines who starts the gane
+     * Determines who starts the game
      *
      * @param player the player who starts the game
      */
@@ -36,8 +36,9 @@ public final class Dice {
 
 
     /**
+     * Rolls the dice
      *
-     * @param player
+     * @param player the player that rolls the dice
      */
     public void rollDice(Player player) {
         logger.info(player.getCurrentPlayer() + " is wanting to roll the dice");
