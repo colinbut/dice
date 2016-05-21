@@ -5,6 +5,8 @@
  */
 package com.mycompany.dice;
 
+import com.mycompany.dice.game.GameState;
+import com.mycompany.dice.game.StartedState;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,14 +21,34 @@ public final class DiceGame {
 
     static final int NUMBER_OF_ROUNDS = 6;
 
-    /**
-     * Main program
-     *
-     * @param args
-     */
-    public static void main(String[] args) {
+    private GameState gameState;
 
+    /**
+     * Constructor
+     *
+     * @param gameState the state of the game being initialized to
+     */
+    public DiceGame(GameState gameState) {
+        this.gameState = gameState;
+    }
+
+    /**
+     * Changes the game state
+     *
+     * @param gameState the new state of the game
+     */
+    public void setState(GameState gameState) {
+        this.gameState = gameState;
+    }
+
+
+    /**
+     * Starts the game
+     */
+    public void startGame() {
         logger.info("Starting Dice game");
+
+        gameState.play(this);
 
         Dice dice = new Dice();
         logger.trace("Initialised Dice object {}", dice);
@@ -45,6 +67,15 @@ public final class DiceGame {
 
         logger.trace("Started player1 thread");
         logger.trace("Started player2 thread");
+    }
 
+    /**
+     * Main program
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
+        DiceGame diceGame = new DiceGame(new StartedState());
+        diceGame.startGame();
     }
 }
