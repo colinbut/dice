@@ -7,6 +7,7 @@ package com.mycompany.dice.game;
 
 import com.mycompany.dice.Dice;
 import com.mycompany.dice.Player;
+import com.mycompany.dice.game.states.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

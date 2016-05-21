@@ -3,27 +3,23 @@
  * | Copyright © 2016 Colin But. All rights reserved.
  * |-------------------------------------------------
  */
-package com.mycompany.dice.game;
+package com.mycompany.dice.game.states;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Ending state
- *
  * @author colin
  */
-public class EndingState implements GameState {
+public class StartedState implements GameState {
 
-    private static final Logger logger = LoggerFactory.getLogger(EndingState.class);
-
-
+    private static final Logger logger = LoggerFactory.getLogger(StartedState.class);
 
     /**
      * {@inheritDoc}
      */
     @Override
     public void transition() {
-        logger.info("[GameState:EndState] " + " Game has ended.");
+        logger.info("[GameState:StartedState] " + " started playing game");
     }
 }
