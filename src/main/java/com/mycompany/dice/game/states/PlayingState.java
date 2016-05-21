@@ -17,6 +17,15 @@ public class PlayingState implements GameState {
 
     private static final Logger logger = LoggerFactory.getLogger(PlayingState.class);
 
+    private static final PlayingState instance = new PlayingState();
+
+    private PlayingState(){
+    }
+
+    public static GameState getInstance() {
+        return instance;
+    }
+
     /**
      * {@inheritDoc}
      */

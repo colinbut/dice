@@ -27,28 +27,18 @@ public final class DiceGame {
 
     public static final int NUMBER_OF_ROUNDS = 6;
 
-    private static GameState gameState;
+    private GameState gameState;
 
     private List<Player> players = new ArrayList<>();
 
     private static Map<GameStates, GameState> gameStates = new HashMap<>();
 
     static {
-        gameStates.put(GameStates.STARTED, new StartedState());
-        gameStates.put(GameStates.PLAYING, new PlayingState());
-        gameStates.put(GameStates.ENDED, new EndingState());
+        gameStates.put(GameStates.STARTED, StartedState.getInstance());
+        gameStates.put(GameStates.PLAYING, PlayingState.getInstance());
+        gameStates.put(GameStates.ENDED, EndingState.getInstance());
     }
 
-
-
-    /**
-     * Changes the game state
-     *
-     * @param gameState the new state of the game
-     */
-    public static void setState(GameState gameState) {
-        DiceGame.gameState = gameState;
-    }
 
 
     /**
@@ -85,6 +75,12 @@ public final class DiceGame {
     }
 
 
+    /**
+     * Starts the player threads in order to start 'playing' the
+     * game
+     *
+     * @param playerThreads
+     */
     private void play(List<Thread> playerThreads) {
         for (Player player : players) {
             Thread playerThread = new Thread(player);
@@ -98,6 +94,11 @@ public final class DiceGame {
     }
 
 
+    /**
+     * Prepares the game variables:
+     * - the Dice
+     * - the players
+     */
     private void prepareGame() {
         Dice dice = new Dice();
         logger.trace("Initialised Dice object {}", dice);

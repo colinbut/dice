@@ -9,11 +9,22 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
+ * Started state
+ *
  * @author colin
  */
 public class StartedState implements GameState {
 
     private static final Logger logger = LoggerFactory.getLogger(StartedState.class);
+
+    private static final StartedState instance = new StartedState();
+
+    private StartedState() {
+    }
+
+    public static GameState getInstance() {
+        return instance;
+    }
 
     /**
      * {@inheritDoc}

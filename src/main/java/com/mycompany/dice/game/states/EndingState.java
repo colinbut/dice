@@ -17,7 +17,14 @@ public class EndingState implements GameState {
 
     private static final Logger logger = LoggerFactory.getLogger(EndingState.class);
 
+    private static final EndingState instance = new EndingState();
 
+    private EndingState() {
+    }
+
+    public static GameState getInstance() {
+        return instance;
+    }
 
     /**
      * {@inheritDoc}
