@@ -29,7 +29,7 @@ public final class DiceGameContext {
 
     private GameState gameState;
 
-    private List<Player> players = new ArrayList<>();
+    private List<GamePlayer> players = new ArrayList<>();
 
     private static Map<GameStates, GameState> gameStates = new EnumMap<>(GameStates.class);
 
@@ -81,7 +81,7 @@ public final class DiceGameContext {
      * @param playerThreads
      */
     private void play(List<Thread> playerThreads) {
-        for (Player player : players) {
+        for (GamePlayer player : players) {
             Thread playerThread = new Thread(player);
             playerThread.start();
 
@@ -102,15 +102,18 @@ public final class DiceGameContext {
         Dice dice = new Dice();
         logger.trace("Initialised Dice object {}", dice);
 
-        Player player1 = new Player(dice, "Joe", "Jane");
-        Player player2 = new Player(dice, "Jane", "Joe");
+        Player player1 = new Player("Joe", "Jane");
+        Player player2 = new Player("Jane", "Joe");
 
         logger.trace("Initialised Player 1 {}", player1);
         logger.trace("Initialised Player 2 {}", player2);
 
         dice.setWhoStarts(player1.getCurrentPlayer()); //let's make player 1 start the game
 
-        players.add(player1);
-        players.add(player2);
+        GamePlayer gamePlayer1 = new GamePlayer(dice, player1);
+        GamePlayer gamePlayer2 = new GamePlayer(dice, player2);
+
+        players.add(gamePlayer1);
+        players.add(gamePlayer2);
     }
 }

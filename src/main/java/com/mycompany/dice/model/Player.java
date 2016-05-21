@@ -5,16 +5,14 @@
  */
 package com.mycompany.dice.model;
 
-import com.mycompany.dice.DiceGame;
 
 /**
  * A player
  *
  * @author colin
  */
-public final class Player implements Runnable {
+public final class Player extends Person {
 
-    private Dice dice;
     private String currentPlayer;
     private String otherPlayer;
 
@@ -23,11 +21,10 @@ public final class Player implements Runnable {
      * Constructor
      *
      * @param thisPlayer the current player
-     * @param dice the dice
      * @param otherPlayer the other player
      */
-    public Player(Dice dice, String thisPlayer, String otherPlayer) {
-        this.dice = dice;
+    public Player(String thisPlayer, String otherPlayer) {
+        super(thisPlayer);
         this.currentPlayer = thisPlayer;
         this.otherPlayer = otherPlayer;
     }
@@ -64,13 +61,4 @@ public final class Player implements Runnable {
         return sb.toString();
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void run() {
-        for(int i = 0; i < DiceGame.NUMBER_OF_ROUNDS; i++) {
-            dice.rollDice(this);
-        }
-    }
 }

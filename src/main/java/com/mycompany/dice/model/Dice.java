@@ -5,6 +5,7 @@
  */
 package com.mycompany.dice.model;
 
+import com.mycompany.dice.game.GamePlayer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -38,9 +39,12 @@ public final class Dice {
     /**
      * Rolls the dice
      *
-     * @param player the player that rolls the dice
+     * @param gamePlayer the player that rolls the dice
      */
-    public void rollDice(Player player) {
+    public void rollDice(GamePlayer gamePlayer) {
+
+        Player player = gamePlayer.getGamePlayer();
+
         logger.info(player.getCurrentPlayer() + " is wanting to roll the dice");
         synchronized (this) {
             while (!turn.equals(player.getCurrentPlayer())) { // whilst not your turn
@@ -48,11 +52,11 @@ public final class Dice {
                 // wait for the opposition
                 logger.debug(player.getCurrentPlayer() + " is waiting for the opposition player");
                 try {
-                    System.out.println(player.getCurrentPlayer() + " is waiting for the other player: " +
+                    System.out.println(player.getName() + " is waiting for the other player: " +
                     player.getOtherPlayer());
 
                     if(logger.isDebugEnabled()) {
-                        logger.debug("Player 1: " + player.getCurrentPlayer() + " is waiting for the other player: " +
+                        logger.debug("Player 1: " + player.getName() + " is waiting for the other player: " +
                         player.getOtherPlayer());
                     }
 
