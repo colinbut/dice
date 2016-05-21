@@ -19,8 +19,7 @@ public class StartedState implements GameState {
      * {@inheritDoc}
      */
     @Override
-    public void play(DiceGame diceGame) {
+    public void transition() {
         logger.info("[GameState:StartedState] " + " started playing game");
-        diceGame.setState(new PlayingState());
     }
 }

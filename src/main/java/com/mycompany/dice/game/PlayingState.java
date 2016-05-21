@@ -21,8 +21,7 @@ public class PlayingState implements GameState {
      * {@inheritDoc}
      */
     @Override
-    public void play(DiceGame diceGame) {
+    public void transition() {
         logger.info("[GameState:PlayingState] " + " Game is playing.");
-        diceGame.setState(new EndingState());
     }
 }

@@ -17,11 +17,13 @@ public class EndingState implements GameState {
 
     private static final Logger logger = LoggerFactory.getLogger(EndingState.class);
 
+
+
     /**
      * {@inheritDoc}
      */
     @Override
-    public void play(DiceGame diceGame) {
-        logger.info("[GameState:EndState] " + " Game has ending.");
+    public void transition() {
+        logger.info("[GameState:EndState] " + " Game has ended.");
     }
 }

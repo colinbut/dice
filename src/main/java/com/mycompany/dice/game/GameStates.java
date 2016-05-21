@@ -6,15 +6,11 @@
 package com.mycompany.dice.game;
 
 /**
- * State of the game
+ * Possible valid game states
  *
  * @author colin
  */
-public interface GameState {
+public enum GameStates {
 
-    /**
-     * Plays the game and navigating through the
-     * various game states
-     */
-    void transition();
+    STARTED, PLAYING, ENDED
 }

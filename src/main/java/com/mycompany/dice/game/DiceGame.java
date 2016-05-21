@@ -10,6 +10,11 @@ import com.mycompany.dice.Player;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * Dice Game
  *
@@ -21,38 +26,80 @@ public final class DiceGame {
 
     public static final int NUMBER_OF_ROUNDS = 6;
 
-    private GameState gameState;
+    private static GameState gameState;
 
-    /**
-     * Constructor
-     *
-     * @param gameState the state of the game being initialized to
-     */
-    public DiceGame(GameState gameState) {
-        this.gameState = gameState;
+    private List<Player> players = new ArrayList<>();
+
+    private static Map<GameStates, GameState> gameStates = new HashMap<>();
+
+    static {
+        gameStates.put(GameStates.STARTED, new StartedState());
+        gameStates.put(GameStates.PLAYING, new PlayingState());
+        gameStates.put(GameStates.ENDED, new EndingState());
     }
+
+
 
     /**
      * Changes the game state
      *
      * @param gameState the new state of the game
      */
-    public void setState(GameState gameState) {
-        this.gameState = gameState;
+    public static void setState(GameState gameState) {
+        DiceGame.gameState = gameState;
     }
 
 
     /**
      * Starts the game
      */
-    public void startGame() {
+    public void playGame() {
         logger.info("Starting Dice game");
 
-        gameState.play(this);
+        gameState = gameStates.get(GameStates.STARTED);
+        gameState.transition();
 
+        prepareGame();
+
+        gameState = gameStates.get(GameStates.PLAYING);
+        gameState.transition();
+
+        List<Thread> playerThreads = new ArrayList<>();
+        play(playerThreads);
+
+        // wait for this player thread to finish
+        for (Thread playerThread : playerThreads) {
+
+            try {
+                playerThread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        // when it gets here - game finished
+        gameState = gameStates.get(GameStates.ENDED);
+        gameState.transition();
+
+    }
+
+
+    private void play(List<Thread> playerThreads) {
+        for (Player player : players) {
+            Thread playerThread = new Thread(player);
+            playerThread.start();
+
+            logger.trace("Started player thread");
+
+            playerThreads.add(playerThread);
+
+        }
+    }
+
+
+    private void prepareGame() {
         Dice dice = new Dice();
         logger.trace("Initialised Dice object {}", dice);
-
 
         Player player1 = new Player(dice, "Joe", "Jane");
         Player player2 = new Player(dice, "Jane", "Joe");
@@ -62,11 +109,8 @@ public final class DiceGame {
 
         dice.setWhoStarts(player1.getCurrentPlayer()); //let's make player 1 start the game
 
-        new Thread(player1).start();
-        new Thread(player2).start();
-
-        logger.trace("Started player1 thread");
-        logger.trace("Started player2 thread");
+        players.add(player1);
+        players.add(player2);
     }
 
     /**
@@ -75,7 +119,7 @@ public final class DiceGame {
      * @param args
      */
     public static void main(String[] args) {
-        DiceGame diceGame = new DiceGame(new StartedState());
-        diceGame.startGame();
+        DiceGame diceGame = new DiceGame();
+        diceGame.playGame();
     }
 }
