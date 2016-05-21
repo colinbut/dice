@@ -11,10 +11,7 @@ import com.mycompany.dice.game.states.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Dice Game
@@ -31,7 +28,7 @@ public final class DiceGame {
 
     private List<Player> players = new ArrayList<>();
 
-    private static Map<GameStates, GameState> gameStates = new HashMap<>();
+    private static Map<GameStates, GameState> gameStates = new EnumMap<>(GameStates.class);
 
     static {
         gameStates.put(GameStates.STARTED, StartedState.getInstance());
