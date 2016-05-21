@@ -5,6 +5,8 @@
  */
 package com.mycompany.dice;
 
+import com.mycompany.dice.game.DiceGame;
+
 /**
  * A player
  *

@@ -5,8 +5,6 @@
  */
 package com.mycompany.dice.game;
 
-import com.mycompany.dice.DiceGame;
-
 /**
  * State of the game
  *

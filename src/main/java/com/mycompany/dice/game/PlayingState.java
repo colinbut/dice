@@ -5,7 +5,6 @@
  */
 package com.mycompany.dice.game;
 
-import com.mycompany.dice.DiceGame;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -3,10 +3,10 @@
  * | Copyright © 2016 Colin But. All rights reserved.
  * |-------------------------------------------------
  */
-package com.mycompany.dice;
+package com.mycompany.dice.game;
 
-import com.mycompany.dice.game.GameState;
-import com.mycompany.dice.game.StartedState;
+import com.mycompany.dice.Dice;
+import com.mycompany.dice.Player;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,7 +19,7 @@ public final class DiceGame {
 
     private static final Logger logger = LoggerFactory.getLogger(DiceGame.class);
 
-    static final int NUMBER_OF_ROUNDS = 6;
+    public static final int NUMBER_OF_ROUNDS = 6;
 
     private GameState gameState;
 
