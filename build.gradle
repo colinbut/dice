@@ -2,7 +2,7 @@ apply plugin: 'java'
 
 jar {
 	manifest {
-		attributes 'Main-Class': 'com.mycompany.dice.game.DiceGame'
+		attributes 'Main-Class': 'com.mycompany.dice.DiceGame'
 	}
 }
 

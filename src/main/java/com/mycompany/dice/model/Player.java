@@ -3,9 +3,9 @@
  * | Copyright © 2016 Colin But. All rights reserved.
  * |-------------------------------------------------
  */
-package com.mycompany.dice;
+package com.mycompany.dice.model;
 
-import com.mycompany.dice.game.DiceGame;
+import com.mycompany.dice.DiceGame;
 
 /**
  * A player
