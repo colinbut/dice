@@ -74,7 +74,7 @@ public final class Dice {
 
             throwDice(player);
 
-            System.out.println(player + " throws " + getDiceNumber());
+            System.out.println(player.getName() + " throws " + getDiceNumber());
             turn = player.getOtherPlayer();
             notifyAll(); // can use notify also
             logger.debug(player.getCurrentPlayer() + " is signalling he/she finishes his/her turn now");
