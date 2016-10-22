@@ -27,7 +27,8 @@ a total of 12 throws of the dice.
 * Me <colin.but@outlook.com>
 
 ### <a name="project-demo"></a>Project Demo
-TBD
+![Image of a Demo]
+(src/main/resources/etc/demo-screenshot.png)
 
 ### <a name="tech-tool"></a>Technology/Tool
 * Java
