@@ -13,8 +13,7 @@
 This is a dice playing game. There are two players in the game where the players throws the dice on their turns.
 The players are "Joe" and "Jane".
 
-![Image of Dice]
-(src/main/resources/etc/dice2.jpg)
+![Image of Dice](src/main/resources/etc/dice2.jpg)
 
 
 When one player throws the dice, the other player waits. Once the player completes his/her turn, he/she informs it is
@@ -27,8 +26,7 @@ a total of 12 throws of the dice.
 * Me <colin.but@outlook.com>
 
 ### <a name="project-demo"></a>Project Demo
-![Image of a Demo]
-(src/main/resources/etc/demo-screenshot.png)
+![Image of a Demo](src/main/resources/etc/demo-screenshot.png)
 
 ### <a name="tech-tool"></a>Technology/Tool
 * Java
