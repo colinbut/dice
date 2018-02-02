@@ -1,5 +1,7 @@
 # Dice
 
+[![Build Status](https://travis-ci.org/colinbut/dice.svg?branch=master)](https://travis-ci.org/colinbut/dice)
+
 ## Table of Contents
 
 * [Summary/Overview](#summary-overview)
