@@ -37,3 +37,5 @@ a total of 12 throws of the dice.
 * Git (Github)
 * Travis CI
 * Logback
+
+This projects demonstrates Java's Object wait() & notify()/notifyall() mechanism
