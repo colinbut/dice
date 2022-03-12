@@ -39,3 +39,7 @@ a total of 12 throws of the dice.
 * Logback
 
 This projects demonstrates Java's Object wait() & notify()/notifyall() mechanism
+
+## Author
+
+Colin But
